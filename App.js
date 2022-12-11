@@ -2,12 +2,32 @@ import React from "react"
 import Die from "./Die"
 import {nanoid} from "nanoid"
 import Confetti from "react-confetti"
+// import { layer } from "@fortawesome/fontawesome-svg-core"
 
 export default function App() {
 
     const [dice, setDice] = React.useState(allNewDice())
-    
     const [tenzies, setTenzies] = React.useState(false)
+    // const [count, setCount] = React.useState(0)
+    // const [isActive, setIsActive] = React.useState(true);
+    // const [seconds, setSeconds] = React.useState(0);
+    // const [minutes , setMinutes] = React.useState(0)
+
+    // let timer = []
+    // React.useEffect(() => {
+    //     if (isActive) {
+    //         timer = setInterval(() => {
+    //             setSeconds((seconds) => seconds + 1);
+    //         }, 1000)
+    //         if (seconds === 59) {
+    //             setMinutes((minutes) => minutes + 1)
+    //             setSeconds(0)
+    //         }
+    //     }
+    //     return () => {
+    //         clearInterval(timer)
+    //     }
+    // }, [minutes, seconds])
     
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
@@ -41,9 +61,13 @@ export default function App() {
                 die :
                 generateNewDie()
             }))
+            // setCount(count + 1)
         } else {
             setTenzies(false)
             setDice(allNewDice())
+            // setCount(0)
+            // setSeconds(0)
+            // setMinutes(0)
         } 
     }
     function holdDice(id) {
@@ -77,6 +101,12 @@ export default function App() {
             >
             {tenzies ? "New Game" : "Roll"}
             </button>
+
+            {/* <div className="roll-tracker">
+                <h3> No Of Rolls : {count} </h3>
+                <h3> Time :  {minutes < 10 ? "0" + minutes : minutes}:{seconds < 10 ? "0" + seconds : seconds}</h3>
+            </div> */}
+
         </main>
     )
 }
